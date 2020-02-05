@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "@reach/router";
 import * as api from "../api";
+import { AddComment } from "../components/AddComment";
 
 class ArticleComments extends React.Component {
   // this.props.article_id available here
@@ -15,6 +15,7 @@ class ArticleComments extends React.Component {
       return (
         <section>
           ArticleComments
+          <AddComment article_id={this.props.article_id} />
           <ul>
             {comments.map(comment => {
               return (
@@ -35,6 +36,11 @@ class ArticleComments extends React.Component {
 
   componentDidMount() {
     this.fetchCommentsByArticleId();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // if(!prevState.newCommentSubmit) {
+    // }
   }
 
   fetchCommentsByArticleId = () => {

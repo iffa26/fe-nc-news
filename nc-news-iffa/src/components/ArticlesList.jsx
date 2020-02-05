@@ -4,13 +4,29 @@ import * as api from "../api";
 
 class ArticlesList extends React.Component {
   state = {
-    articles: []
+    articles: [],
+    comment_count: { order: "desc" },
+    votes: { order: "desc" },
+    created_at: { order: "desc" }
   };
 
   render() {
+    console.log("articles", this.state.articles);
     return (
       <main>
         <h2>Articles List {this.props.topic_slug}</h2>
+        <section>
+          Sort by:
+          <button id="comment_count" onClick={this.sortArticles}>
+            comments
+          </button>
+          <button id="created_at" onClick={this.sortArticles}>
+            date
+          </button>
+          <button id="votes" onClick={this.sortArticles}>
+            votes
+          </button>
+        </section>
         <ul>
           {this.state.articles.map(article => {
             return (
@@ -22,6 +38,8 @@ class ArticlesList extends React.Component {
                   <h4>{article.topic}</h4>
                 </Link>
                 <h4> {article.comment_count} comments</h4>
+                <h4> {article.votes} votes</h4>
+                <h4> {article.created_at} </h4>
               </li>
             );
           })}
@@ -35,7 +53,7 @@ class ArticlesList extends React.Component {
   }
 
   fetchArticles = () => {
-    console.log("in fetchArticles", this.props);
+    //console.log("in fetchArticles", this.props);
     const { topic_slug } = this.props;
     api
       .getArticles(topic_slug)
@@ -46,6 +64,19 @@ class ArticlesList extends React.Component {
         console.log(err);
         //this.setState({err:err})
       });
+  };
+
+  sortArticles = event => {
+    const sort_by = event.target.id;
+    const order = this.state[sort_by].order;
+
+    api.getArticles(null, sort_by, order).then(articles => {
+      let newOrder = "asc";
+      if (order === "asc") {
+        newOrder = "desc";
+      }
+      this.setState({ articles, [sort_by]: { order: newOrder } });
+    });
   };
 }
 
