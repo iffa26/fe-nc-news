@@ -1,6 +1,7 @@
 import React from "react";
 import * as api from "../api";
 import { ArticleComments } from "./ArticleComments";
+import { VotingButtons } from "./VotingButtons";
 
 class SingleArticle extends React.Component {
   state = { article: null };
@@ -12,6 +13,10 @@ class SingleArticle extends React.Component {
         <main>
           <h2>{article.title}</h2>
           <p>{article.body}</p>
+          <VotingButtons
+            votes={article.votes}
+            article_id={article.article_id}
+          />
           <ArticleComments article_id={article.article_id} />
         </main>
       );

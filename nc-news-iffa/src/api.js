@@ -47,6 +47,32 @@ export const postComment = (article_id, body, username) => {
     });
 };
 
+export const patchArticleVotes = (article_id, newVote) => {
+  return axios
+    .patch(`http://nc-news-iffa.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: newVote
+    })
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const patchCommentVotes = (comment_id, newVote) => {
+  return axios
+    .patch(`http://nc-news-iffa.herokuapp.com/api/comments/${comment_id}`, {
+      inc_votes: newVote
+    })
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
+
+export const deleteComment = comment_id => {
+  return axios.delete(
+    `http://nc-news-iffa.herokuapp.com/api/comments/${comment_id}`
+  );
+};
+
 /*
 axios.get('/data', {
   params: {

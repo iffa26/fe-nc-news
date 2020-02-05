@@ -25,7 +25,7 @@ class AddComment extends React.Component {
         {newCommentPost && (
           <ul>
             <li key={newCommentPost.comment_id}>
-              <p>{newCommentPost.body}</p>
+              <p>***temp***{newCommentPost.body}</p>
               <p>
                 @{newCommentPost.author} - votes: {newCommentPost.votes}
               </p>
