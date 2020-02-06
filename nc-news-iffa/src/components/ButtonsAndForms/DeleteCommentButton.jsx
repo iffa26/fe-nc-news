@@ -1,5 +1,4 @@
 import React from "react";
-//import * as api from "../api";
 
 class DeleteCommentButton extends React.Component {
   state = { username: "jessjelly" };

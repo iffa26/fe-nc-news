@@ -1,7 +1,7 @@
 import React from "react";
-import * as api from "../api";
-import { ArticleComments } from "./ArticleComments";
-import { VotingButtons } from "./VotingButtons";
+import * as api from "../../api";
+import { ArticleComments } from "../Lists/ArticleComments";
+import { VotingButtons } from "../ButtonsAndForms/VotingButtons";
 
 class SingleArticle extends React.Component {
   state = { article: null };

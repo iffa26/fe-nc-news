@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import * as api from "../api";
+import * as api from "../../api";
 
 class TopicsList extends React.Component {
   state = {

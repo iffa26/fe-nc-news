@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "@reach/router";
-import * as api from "../api";
+//import { Link } from "@reach/router";
+import * as api from "../../api";
+import { ArticleCard } from "../Cards/ArticleCard";
+import { SortByButtons } from "../ButtonsAndForms/SortByButtons";
 
 class ArticlesList extends React.Component {
   state = {
@@ -15,33 +17,10 @@ class ArticlesList extends React.Component {
     return (
       <main>
         <h2>Articles List {this.props.topic_slug}</h2>
-        <section>
-          Sort by:
-          <button id="comment_count" onClick={this.sortArticles}>
-            comments
-          </button>
-          <button id="created_at" onClick={this.sortArticles}>
-            date
-          </button>
-          <button id="votes" onClick={this.sortArticles}>
-            votes
-          </button>
-        </section>
+        <SortByButtons sortArticles={this.sortArticles} />
         <ul>
           {this.state.articles.map(article => {
-            return (
-              <li key={article.article_id}>
-                <Link to={`/article/${article.article_id}`}>
-                  <h3>{article.title}</h3>
-                </Link>
-                <Link to={`/articles/topic/${article.topic}`}>
-                  <h4>{article.topic}</h4>
-                </Link>
-                <h4> {article.comment_count} comments</h4>
-                <h4> {article.votes} votes</h4>
-                <h4> {article.created_at} </h4>
-              </li>
-            );
+            return <ArticleCard article={article} key={article.article_id} />;
           })}
         </ul>
       </main>

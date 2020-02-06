@@ -2,11 +2,11 @@ import React from "react";
 import "./App.css";
 import { Router } from "@reach/router";
 
-import { Header } from "./components/Header";
-import { NavBar } from "./components/NavBar";
-import { SingleArticle } from "./components/SingleArticle";
-import { ArticlesList } from "./components/ArticlesList";
-import { TopicsList } from "./components/TopicsList";
+import { Header } from "./components/PagesAndSections/Header";
+import { NavBar } from "./components/PagesAndSections/NavBar";
+import { SingleArticle } from "./components/PagesAndSections/SingleArticle";
+import { ArticlesList } from "./components/Lists/ArticlesList";
+import { TopicsList } from "./components/Lists/TopicsList";
 
 function App() {
   return (

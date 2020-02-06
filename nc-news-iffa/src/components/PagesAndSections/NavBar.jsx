@@ -16,6 +16,7 @@ const NavBar = () => {
       <Link to="/articles/2">
         <button>TEMP Article 2</button>
       </Link>
+      You are logged in as:
     </nav>
   );
 };
