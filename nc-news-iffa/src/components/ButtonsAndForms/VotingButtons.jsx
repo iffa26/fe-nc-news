@@ -4,19 +4,20 @@ import * as api from "../../api";
 class VotingButtons extends React.Component {
   state = { changeVotesBy: 0 };
   render() {
-    console.log("render", this.state.changeVotesBy);
+    const { userLoggedIn } = this.props;
+
     return (
       <p>
         votes: {this.props.votes + this.state.changeVotesBy}
         <button
           onClick={() => this.handleClick(1)}
-          disabled={this.state.changeVotesBy > 0}
+          disabled={this.state.changeVotesBy > 0 || userLoggedIn === null}
         >
           +
         </button>
         <button
           onClick={() => this.handleClick(-1)}
-          disabled={this.state.changeVotesBy < 0}
+          disabled={this.state.changeVotesBy < 0 || userLoggedIn === null}
         >
           -
         </button>

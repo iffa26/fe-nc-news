@@ -1,15 +1,19 @@
 import React from "react";
 import { Link } from "@reach/router";
 import * as api from "../../api";
+import { Loading } from "../PagesAndSections/Loading";
+import { ErrorPage } from "../PagesAndSections/ErrorPage";
 
 class TopicsList extends React.Component {
   state = {
     topics: null,
-    isLoading: true
+    isLoading: true,
+    err: null
   };
 
   render() {
-    const { topics } = this.state;
+    const { topics, err } = this.state;
+    if (err) return <ErrorPage err={err} />;
     if (topics) {
       return (
         <main>
@@ -27,16 +31,26 @@ class TopicsList extends React.Component {
           </ul>
         </main>
       );
-    } else return <main>Loading...</main>;
+    } else
+      return (
+        <main>
+          <Loading />
+        </main>
+      );
   }
 
   componentDidMount() {
     this.fetchTopics();
   }
   fetchTopics = () => {
-    api.getTopics().then(topics => {
-      this.setState({ topics, isLoading: false });
-    });
+    api
+      .getTopics()
+      .then(topics => {
+        this.setState({ topics, isLoading: false, err: null });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   };
 }
 

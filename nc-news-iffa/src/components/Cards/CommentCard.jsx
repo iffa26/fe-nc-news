@@ -3,7 +3,7 @@ import { VotingButtons } from "../ButtonsAndForms/VotingButtons";
 import { DeleteCommentButton } from "../ButtonsAndForms/DeleteCommentButton";
 
 function CommentCard(props) {
-  const { comment, username, removeComment } = props;
+  const { comment, username, removeComment, deleteErr } = props;
   return (
     <li>
       <p>{comment.body}</p>
@@ -18,6 +18,7 @@ function CommentCard(props) {
           removeComment={removeComment}
         />
       )}
+      {deleteErr && <p>error deleting comment, try again later</p>}
     </li>
   );
 }

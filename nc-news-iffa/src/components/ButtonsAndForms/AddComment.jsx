@@ -2,13 +2,13 @@ import React from "react";
 //import * as api from "../api";
 
 class AddComment extends React.Component {
-  //this.props.article_id available here
   state = {
     newCommentInput: ""
   };
 
   render() {
     const { newCommentInput } = this.state;
+    const { userLoggedIn } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -17,7 +17,8 @@ class AddComment extends React.Component {
           onChange={this.handleInput}
           value={newCommentInput}
         />
-        <button>post!</button>
+        <button disabled={userLoggedIn === null}>post!</button>
+        <p>Login to comment and vote!</p>
       </form>
     );
   }
@@ -30,8 +31,8 @@ class AddComment extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     const { newCommentInput } = this.state;
-    const { username } = this.props;
-    this.props.addComment(newCommentInput, username);
+    const { userLoggedIn } = this.props;
+    this.props.addComment(newCommentInput, userLoggedIn);
     this.setState({ newCommentInput: "" });
   };
 }

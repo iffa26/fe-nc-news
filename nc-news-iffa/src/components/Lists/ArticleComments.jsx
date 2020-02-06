@@ -4,30 +4,34 @@ import { AddComment } from "../ButtonsAndForms/AddComment";
 import { CommentCard } from "../Cards/CommentCard";
 
 class ArticleComments extends React.Component {
-  // this.props.article_id available here
   state = {
-    comments: [],
-    username: "jessjelly"
+    comments: null,
+    postErr: null,
+    deleteErr: null
   };
 
-  // need a fucntion which takes new comment and deletes it from state. dont mutate. pass this too DeleteComment component
-
   render() {
-    const { comments, username } = this.state;
-    console.log(comments);
+    const { comments, postErr, deleteErr } = this.state;
+    const { userLoggedIn } = this.props;
+
     if (comments) {
       return (
         <section>
           ArticleComments
-          <AddComment username={username} addComment={this.addComment} />
+          <AddComment
+            userLoggedIn={userLoggedIn}
+            addComment={this.addComment}
+          />
+          {postErr && <p>Error posting comment, try again later</p>}
           <ul>
             {comments.map(comment => {
               return (
                 <CommentCard
                   key={comment.comment_id}
                   comment={comment}
-                  username={username}
+                  userLoggedIn={userLoggedIn}
                   removeComment={this.removeComment}
+                  deleteErr={deleteErr}
                 />
               );
             })}
@@ -47,22 +51,30 @@ class ArticleComments extends React.Component {
     });
   };
 
-  addComment = (newCommentInput, username) => {
+  addComment = (newCommentInput, userLoggedIn) => {
     const { article_id } = this.props;
-    console.log(article_id, newCommentInput, username);
 
-    api.postComment(article_id, newCommentInput, username).then(comment => {
-      console.log(comment);
-      this.setState({ comments: [comment, ...this.state.comments] });
-    });
+    api
+      .postComment(article_id, newCommentInput, userLoggedIn)
+      .then(comment => {
+        this.setState({
+          comments: [comment, ...this.state.comments],
+          postErr: null
+        });
+      })
+      .catch(err => {
+        this.setState({ postErr: err });
+      });
   };
 
   removeComment = comment_id => {
-    api.deleteComment(comment_id);
+    api.deleteComment(comment_id).catch(err => {
+      this.setState({ deleteErr: err });
+    });
     const newComments = this.state.comments.filter(comment => {
       return comment.comment_id !== comment_id;
     });
-    this.setState({ comments: newComments });
+    this.setState({ comments: newComments, deleteErr: null });
   };
 }
 
