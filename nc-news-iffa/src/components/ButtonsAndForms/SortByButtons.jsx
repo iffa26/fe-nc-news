@@ -2,7 +2,6 @@ import React from "react";
 
 function SortByButtons(props) {
   const { sortArticles } = props;
-  //console.log(sortArticles);
   return (
     <section>
       Sort by:

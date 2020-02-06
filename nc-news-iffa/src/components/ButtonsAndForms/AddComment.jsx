@@ -1,5 +1,4 @@
 import React from "react";
-//import * as api from "../api";
 
 class AddComment extends React.Component {
   state = {
@@ -18,7 +17,7 @@ class AddComment extends React.Component {
           value={newCommentInput}
         />
         <button disabled={userLoggedIn === null}>post!</button>
-        <p>Login to comment and vote!</p>
+        {!userLoggedIn && <p>Login to comment and vote!</p>}
       </form>
     );
   }

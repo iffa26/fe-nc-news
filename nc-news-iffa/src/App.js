@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Router } from "@reach/router";
-
 import { Header } from "./components/PagesAndSections/Header";
 import { NavBar } from "./components/PagesAndSections/NavBar";
 import { SingleArticle } from "./components/PagesAndSections/SingleArticle";
@@ -36,8 +35,6 @@ class App extends React.Component {
   }
 
   loginLogout = updateUserTo => {
-    console.log("loginLogout", updateUserTo);
-    // const { userLoggedIn } = this.state;
     if (updateUserTo) {
       this.setState({ userLoggedIn: updateUserTo });
     } else {

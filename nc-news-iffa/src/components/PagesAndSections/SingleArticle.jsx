@@ -8,7 +8,6 @@ import { Loading } from "./Loading";
 class SingleArticle extends React.Component {
   state = { article: null, err: null, isLoading: true };
 
-  // article_id accessible on props here
   render() {
     const { article, err } = this.state;
     const { userLoggedIn } = this.props;
@@ -50,7 +49,6 @@ class SingleArticle extends React.Component {
         this.setState({ article, err: null });
       })
       .catch(err => {
-        console.dir("error in catch", err);
         this.setState({ err });
       });
   };

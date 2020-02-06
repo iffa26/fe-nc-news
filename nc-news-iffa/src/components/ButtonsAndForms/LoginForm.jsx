@@ -27,12 +27,8 @@ class LoginForm extends React.Component {
 
   handleClick = event => {
     event.preventDefault();
-    console.log("handle click", event.target.value);
     this.props.loginLogout(event.target.value);
   };
 }
 
 export { LoginForm };
-
-// function on click - update state in app - login/logout
-// fucntion should be defined in app and passed on props
