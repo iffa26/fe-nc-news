@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap");
+
+* {
+  padding: 0 0 0 0;
+  margin: 0px;
+}
+
+.App {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2vmin;
+}
+
+main {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* LISTS */
+
+li {
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+}
+
+/* ARTICLE CARDS */
+
+.ArticleCard {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  border: solid;
+
+  border-width: thin;
+  margin-bottom: 1vmin;
+  margin-top: 0.5vmin;
+}
+
+.ArticleCard-title:hover {
+  background-color: rgba(169, 196, 212, 0.335);
+}
+.ArticleCard-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 2vmin;
+  padding: 0.5vmin;
+}
+
+.ArticleCard-info {
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  font-size: 2vmin;
+}
+
+/*SINGLE ARTICLE */
+
+.SingleArticle-body {
+  text-align: left;
+}
+
+.SingleArticle-info {
+  text-align: left;
+  margin-top: 1.5vmin;
+}
+/* COMMENT CARD */
+
+.CommentCard {
+  text-align: center;
+  border-top: solid;
+  border-left: solid;
+  border-color: grey;
+  margin-bottom: 1vmin;
+  margin-top: 0.5vmin;
+  font-size: 1.5vmin;
+}
+/* POST COMMENT */
+
+.AddComment-input {
+  width: 80vw;
+  height: 50px;
+  font-size: 1.5vmin;
+  text-align: start;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.AddComment-input:hover {
+  background-color: rgba(169, 196, 212, 0.335);
+}
+/* TITLES */
+
+h2 {
+  font-family: "Montserrat Subrayada", sans-serif;
+  font-size: 6vmin;
+}
+
+.SingleArticle-title {
+  font-family: "Montserrat Subrayada", sans-serif;
+  font-size: 4vmin;
+}
+/* NAVBAR, HEADER, LOGIN FORM  */
+
+.MainHeader-title {
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-size: 5vmin;
+  font-family: "Montserrat Subrayada", sans-serif;
+}
+
+.MainHeader-title:link {
+  text-decoration: none;
+}
+
+.navHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header-title navButtons navLoginForm";
+}
+
+.navLinks:link {
+  font-size: 3vmin;
+  text-decoration: none;
+}
+
+.navLinks:visited {
+  color: white;
+}
+.loginForm-text {
+  color: white;
+  font-size: 3vmin;
+}
+
+.loginForm-dropdown {
+  font-size: 2vmin;
+}
+
+form {
+  font-size: 3vmin;
+}
+
+.navButton:hover {
+  background-color: #555;
+  color: white;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-style: none;
+}
+
+nav li {
+  border: none;
+}
+
+button:hover {
+  background-color: #555;
+  color: white;
+}
+
+button {
+  font-size: 1.5vmin;
+  padding: 0.5vmin;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media only screen and (max-width: 600px) {
+  nav ul {
+    display: grid;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header-title  navButtons "
+      ". navLoginForm";
+  }
+
+  .navLoginForm {
+    grid-template: "navLoginForm";
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+  }
+}
