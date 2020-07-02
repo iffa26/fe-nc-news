@@ -4,7 +4,7 @@ import { ArticlesList } from "../Lists/ArticlesList";
 const ArticlesPage = () => {
   return (
     <section>
-      <h2 className="ArticlesPage-title">Top Articles</h2>
+      <h3 className="ArticlesPage-title">Top Articles</h3>
       <ArticlesList />
     </section>
   );

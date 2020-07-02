@@ -12,6 +12,12 @@ function NavBar(props) {
         </li>
         <ul>
           <li>
+            <Link to="/" className="navLinks">
+              Home
+            </Link>
+            &nbsp;
+          </li>
+          <li>
             <Link to="/topics" className="navLinks">
               Topics
             </Link>{" "}

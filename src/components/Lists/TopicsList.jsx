@@ -8,7 +8,7 @@ class TopicsList extends React.Component {
   state = {
     topics: null,
     isLoading: true,
-    err: null
+    err: null,
   };
 
   render() {
@@ -17,9 +17,9 @@ class TopicsList extends React.Component {
     if (topics) {
       return (
         <main>
-          <h2>Top Topics </h2>
+          <h3> Topics </h3>
           <ul>
-            {this.state.topics.map(topic => {
+            {this.state.topics.map((topic) => {
               return (
                 <li key={topic.slug}>
                   <Link to={`/articles/topic/${topic.slug}`}>
@@ -45,10 +45,10 @@ class TopicsList extends React.Component {
   fetchTopics = () => {
     api
       .getTopics()
-      .then(topics => {
+      .then((topics) => {
         this.setState({ topics, isLoading: false, err: null });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err });
       });
   };

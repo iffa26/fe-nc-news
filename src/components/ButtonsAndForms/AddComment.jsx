@@ -2,35 +2,42 @@ import React from "react";
 
 class AddComment extends React.Component {
   state = {
-    newCommentInput: ""
+    newCommentInput: "",
   };
 
   render() {
     const { newCommentInput } = this.state;
     const { userLoggedIn } = this.props;
     return (
-      <section>
+      <section className="AddComment">
         <form onSubmit={this.handleSubmit}>
           <input
             className="AddComment-input"
             type="text"
             name="newCommentInput"
+            placeholder={
+              userLoggedIn ? "Add a new comment" : "Login to post a comment"
+            }
             onChange={this.handleInput}
             value={newCommentInput}
           />
-          <button disabled={userLoggedIn === null}>post a comment!</button>
-          {!userLoggedIn && <p>Login to comment and vote!</p>}
+          <button
+            className="AddComment-button"
+            disabled={userLoggedIn === null}
+          >
+            Post comment!
+          </button>
         </form>
       </section>
     );
   }
 
-  handleInput = event => {
+  handleInput = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { newCommentInput } = this.state;
     const { userLoggedIn } = this.props;

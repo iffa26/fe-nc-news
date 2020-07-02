@@ -7,7 +7,7 @@ class ArticleComments extends React.Component {
   state = {
     comments: [],
     postErr: null,
-    deleteErr: null
+    deleteErr: null,
   };
 
   render() {
@@ -22,8 +22,9 @@ class ArticleComments extends React.Component {
             addComment={this.addComment}
           />
           {postErr && <p>Error posting comment, try again later</p>}
+          <p>{comments.length} comments!</p>
           <ul>
-            {comments.map(comment => {
+            {comments.map((comment) => {
               return (
                 <CommentCard
                   key={comment.comment_id}
@@ -45,7 +46,7 @@ class ArticleComments extends React.Component {
   }
 
   fetchCommentsByArticleId = () => {
-    api.getCommentsByArticleId(this.props.article_id).then(comments => {
+    api.getCommentsByArticleId(this.props.article_id).then((comments) => {
       this.setState({ comments });
     });
   };
@@ -55,26 +56,26 @@ class ArticleComments extends React.Component {
 
     api
       .postComment(article_id, newCommentInput, userLoggedIn)
-      .then(comment => {
-        this.setState(currentState => {
+      .then((comment) => {
+        this.setState((currentState) => {
           return {
             comments: [comment, ...currentState.comments],
-            postErr: null
+            postErr: null,
           };
         });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ postErr: err });
       });
   };
 
-  removeComment = comment_id => {
-    api.deleteComment(comment_id).catch(err => {
+  removeComment = (comment_id) => {
+    api.deleteComment(comment_id).catch((err) => {
       this.setState({ deleteErr: err });
     });
 
-    this.setState(currentState => {
-      const newComments = currentState.comments.filter(comment => {
+    this.setState((currentState) => {
+      const newComments = currentState.comments.filter((comment) => {
         return comment.comment_id !== comment_id;
       });
       return { comments: newComments, deleteErr: null };

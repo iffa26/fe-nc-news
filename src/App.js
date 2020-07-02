@@ -5,6 +5,7 @@ import { SingleArticle } from "./components/PagesAndSections/SingleArticle";
 import { TopicsList } from "./components/Lists/TopicsList";
 import { ErrorPage } from "./components/PagesAndSections/ErrorPage";
 import { NavBar } from "./components/PagesAndSections/NavBar";
+import { Homepage } from "./components/PagesAndSections/Homepage";
 import { ArticlesPage } from "./components/PagesAndSections/ArticlesPage";
 import { ArticlesByTopicPage } from "./components/PagesAndSections/ArticlesByTopicsPage";
 
@@ -17,7 +18,7 @@ class App extends React.Component {
       <div className="App">
         <NavBar userLoggedIn={userLoggedIn} loginLogout={this.loginLogout} />
         <Router>
-          <ArticlesPage path="/" />
+          <Homepage path="/" />
           <ArticlesPage path="/articles" />
           <SingleArticle
             path="/article/:article_id"
@@ -31,7 +32,7 @@ class App extends React.Component {
     );
   }
 
-  loginLogout = updateUserTo => {
+  loginLogout = (updateUserTo) => {
     if (updateUserTo) {
       this.setState({ userLoggedIn: updateUserTo });
     } else {

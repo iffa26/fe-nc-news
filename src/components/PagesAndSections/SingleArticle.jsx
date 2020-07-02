@@ -17,21 +17,26 @@ class SingleArticle extends React.Component {
     if (article) {
       return (
         <main>
-          <h2 className="SingleArticle-title">{article.title}</h2>
-          <p className="SingleArticle-body">{article.body}</p>
-          <section className="SingleArticle-info">
-            by @{article.author} in &nbsp;
-            <Link to={`/articles/topic/${article.topic}`}>{article.topic}</Link>
-            <VotingButtons
-              votes={article.votes}
+          <section className="SingleArticle">
+            <h2 className="SingleArticle-title">{article.title}</h2>
+            <p className="SingleArticle-body">{article.body}</p>
+            <section className="SingleArticle-info">
+              by @{article.author} in &nbsp;
+              <Link to={`/articles/topic/${article.topic}`}>
+                {article.topic}
+              </Link>
+              <VotingButtons
+                votes={article.votes}
+                article_id={article.article_id}
+                userLoggedIn={userLoggedIn}
+              />
+            </section>
+
+            <ArticleComments
               article_id={article.article_id}
               userLoggedIn={userLoggedIn}
             />
           </section>
-          <ArticleComments
-            article_id={article.article_id}
-            userLoggedIn={userLoggedIn}
-          />
         </main>
       );
     } else
@@ -50,10 +55,10 @@ class SingleArticle extends React.Component {
     const { article_id } = this.props;
     api
       .getSingleArticle(article_id)
-      .then(article => {
+      .then((article) => {
         this.setState({ article, err: null });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err });
       });
   };

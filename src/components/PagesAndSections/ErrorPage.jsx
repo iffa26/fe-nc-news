@@ -6,18 +6,18 @@ function ErrorPage(props) {
 
     return (
       <section>
-        <h2 className="errorMessage">error</h2>
-        <h3 className="errorStatus">
+        <h3 className="errorMessage">error</h3>
+        <p className="errorStatus">
           status:
           {status}
-        </h3>
+        </p>
       </section>
     );
   } else
     return (
       <section>
-        <h2 className="errorMessage">error</h2>
-        <h3 className="errorStatus">status: 404 Page Not Found</h3>
+        <h3 className="errorMessage">error</h3>
+        <p className="errorStatus">status: 404 Page Not Found</p>
       </section>
     );
 }

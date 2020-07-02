@@ -1,5 +1,14 @@
+/* main title text:
+ font-family: "Montserrat Subrayada"*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap");
+
+/* sub title text - h2, h3:
+font-family: "Fredericka the Great"*/
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+
+/* normal text: 
+font-family: "Barlow Semi Condensed" */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap");
 
 * {
   padding: 0 0 0 0;
@@ -8,13 +17,51 @@
 
 .App {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
   font-size: 2vmin;
 }
 
 main {
   padding-left: 10%;
   padding-right: 10%;
+}
+
+body {
+  background-color: #ecfffb;
+}
+/* TITLES */
+
+h2 {
+  font-family: "Fredericka the Great", sans-serif;
+  font-size: 4vmin;
+  text-decoration: none;
+  padding: 20px;
+}
+
+h3 {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 3vmin;
+  text-decoration: none;
+  padding: 20px;
+}
+
+h4 {
+  padding: 20px;
+}
+
+/* LINKS */
+
+a:link {
+  color: #299984;
+}
+a:visited {
+  color: #297699;
+}
+a:hover {
+  color: #333;
+}
+a:active {
+  color: blue;
 }
 
 /* LISTS */
@@ -25,6 +72,7 @@ li {
 ul {
   list-style-type: none;
 }
+/* HOMEPAGE */
 
 /* ARTICLE CARDS */
 
@@ -33,23 +81,26 @@ ul {
   display: grid;
   grid-template-columns: 4fr 1fr;
   border: solid;
-
   border-width: thin;
   margin-bottom: 1vmin;
   margin-top: 0.5vmin;
 }
 
-.ArticleCard-title:hover {
-  background-color: rgba(169, 196, 212, 0.335);
-}
-.ArticleCard-title {
+.ArticleCard-titleAuthorTopic {
   display: flex;
   flex-direction: column;
   font-size: 2vmin;
   padding: 0.5vmin;
+  background-color: white;
+}
+.ArticleCard-titleAuthorTopic:hover {
+  background-color: #ecfffb;
+}
+.ArticleCard-title {
+  font-family: "Barlow Semi Condensed";
 }
 
-.ArticleCard-info {
+.ArticleCard-commentsVotesTime {
   background-color: lightgrey;
   display: flex;
   flex-direction: column;
@@ -58,54 +109,74 @@ ul {
 
 /*SINGLE ARTICLE */
 
+.SingleArticle-title {
+  font-family: "Barlow Semi Condensed";
+  margin-top: 1vmin;
+}
 .SingleArticle-body {
   text-align: left;
 }
-
 .SingleArticle-info {
   text-align: left;
   margin-top: 1.5vmin;
 }
-/* COMMENT CARD */
 
-.CommentCard {
-  text-align: center;
-  border-top: solid;
-  border-left: solid;
-  border-color: grey;
-  margin-bottom: 1vmin;
-  margin-top: 0.5vmin;
-  font-size: 1.5vmin;
-}
 /* POST COMMENT */
 
+.AddComment {
+  text-align: left;
+}
 .AddComment-input {
-  width: 80vw;
-  height: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100px;
   font-size: 1.5vmin;
   text-align: start;
-  resize: none;
-  margin-bottom: 10px;
+}
+.AddComment-button {
+  display: flex;
+  flex-direction: column;
 }
 
 .AddComment-input:hover {
   background-color: rgba(169, 196, 212, 0.335);
 }
-/* TITLES */
 
-h2 {
-  font-family: "Montserrat Subrayada", sans-serif;
-  font-size: 6vmin;
+/* COMMENT CARD */
+
+.CommentCard {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  text-align: left;
+  border-top: solid;
+  border-color: #45ffdc;
+  margin: 1vmin;
+  font-size: 1.6vmin;
 }
 
-.SingleArticle-title {
-  font-family: "Montserrat Subrayada", sans-serif;
-  font-size: 4vmin;
+.CommentCard-left {
+  position: relative;
 }
+.CommentCard-author {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.4vmin;
+  color: #299984;
+}
+
+/* VOTING BUTTONS */
+.Voting {
+  margin: 1vmin;
+}
+.Voting-number {
+  margin: 1vmin;
+}
+
 /* NAVBAR, HEADER, LOGIN FORM  */
 
 .MainHeader-title {
-  color: white;
+  color: #333;
   padding: 0;
   margin: 0;
   font-size: 5vmin;
@@ -123,15 +194,16 @@ h2 {
 }
 
 .navLinks:link {
-  font-size: 3vmin;
+  font-size: 5vmin;
   text-decoration: none;
+  font-family: "Fredericka the Great";
 }
 
 .navLinks:visited {
-  color: white;
+  color: #333;
 }
 .loginForm-text {
-  color: white;
+  color: #333;
   font-size: 3vmin;
 }
 
@@ -149,9 +221,8 @@ form {
 }
 
 nav {
-  background-color: #333;
+  background-color: #45ffdc;
   padding: 10px;
-  margin-bottom: 2px;
 }
 
 nav ul {
@@ -167,7 +238,7 @@ nav li {
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #299984;
   color: white;
 }
 

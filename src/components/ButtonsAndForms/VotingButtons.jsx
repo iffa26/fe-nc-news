@@ -7,19 +7,25 @@ class VotingButtons extends React.Component {
     const { userLoggedIn } = this.props;
 
     return (
-      <p>
-        votes: {this.props.votes + this.state.changeVotesBy}
+      <p className="Voting">
         <button
           onClick={() => this.handleClick(1)}
           disabled={this.state.changeVotesBy > 0 || userLoggedIn === null}
         >
-          +
+          <span role="img" aria-label="thumbs-up">
+            👍
+          </span>
         </button>
+        <span className="Voting-number">
+          {this.props.votes + this.state.changeVotesBy}
+        </span>
         <button
           onClick={() => this.handleClick(-1)}
           disabled={this.state.changeVotesBy < 0 || userLoggedIn === null}
         >
-          -
+          <span role="img" aria-label="thumbs-down">
+            👎
+          </span>
         </button>
       </p>
     );
@@ -29,7 +35,7 @@ class VotingButtons extends React.Component {
     if (prevState.changeVotesBy !== 0) this.setState({ changeVotesBy: 0 });
   }
 
-  handleClick = changeVotesBy => {
+  handleClick = (changeVotesBy) => {
     const { article_id, comment_id } = this.props;
     if (article_id) {
       this.setState({ changeVotesBy });
@@ -40,7 +46,7 @@ class VotingButtons extends React.Component {
     this.updateVotes(changeVotesBy);
   };
 
-  updateVotes = changeVotesBy => {
+  updateVotes = (changeVotesBy) => {
     const { article_id, comment_id } = this.props;
 
     if (article_id) api.patchArticleVotes(article_id, changeVotesBy);
