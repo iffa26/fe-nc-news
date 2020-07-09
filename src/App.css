@@ -158,9 +158,8 @@ ul {
 .CommentCard-left {
   position: relative;
 }
+
 .CommentCard-author {
-  position: absolute;
-  bottom: 0;
   font-size: 1.4vmin;
   color: #299984;
 }

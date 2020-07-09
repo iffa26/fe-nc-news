@@ -1,6 +1,7 @@
 import React from "react";
 import { VotingButtons } from "../ButtonsAndForms/VotingButtons";
 import { DeleteCommentButton } from "../ButtonsAndForms/DeleteCommentButton";
+import { FormatDate } from "../PagesAndSections/FormatDate";
 
 function CommentCard(props) {
   const { comment, userLoggedIn, removeComment, deleteErr } = props;
@@ -16,20 +17,21 @@ function CommentCard(props) {
               userLoggedIn={userLoggedIn}
             />
           )}
-        </p>{" "}
+        </p>
         <p>{deleteErr && <p>error deleting comment, try again later</p>}</p>
         <p className="CommentCard-author">
-          by @{comment.author} at {comment.created_at}
+          by @{comment.author},
+          <FormatDate rawDateString={comment.created_at} /> ago
         </p>
       </section>
       <section className="CommentCard-right">
-        <p className="CommentCard-votes">
+        <section className="CommentCard-votes">
           <VotingButtons
             comment_id={comment.comment_id}
             votes={comment.votes}
             userLoggedIn={userLoggedIn}
           />
-        </p>
+        </section>
       </section>
     </li>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { FormatDate } from "../PagesAndSections/FormatDate";
 
 function ArticleCard(props) {
   const { article } = props;
@@ -17,7 +18,10 @@ function ArticleCard(props) {
       <section className="ArticleCard-commentsVotesTime">
         <p> {article.comment_count} comments</p>
         <p> {article.votes} votes</p>
-        <p> {article.created_at} </p>
+        <p>
+          Posted
+          <FormatDate rawDateString={article.created_at} ago />
+        </p>
       </section>
     </li>
   );
