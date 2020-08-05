@@ -6,37 +6,34 @@ import { LoginForm } from "../ButtonsAndForms/LoginForm";
 function NavBar(props) {
   return (
     <nav>
-      <ul>
-        <li>
-          <Header className="navHeader" />
-        </li>
+      <section className="navHeader">
+        <Header />
+      </section>
+      <section className="navLinksList">
         <ul>
           <li>
-            <Link to="/" className="navLinks">
+            <Link className="navLinksListItem" to="/">
               Home
             </Link>
-            &nbsp;
           </li>
           <li>
-            <Link to="/topics" className="navLinks">
+            <Link className="navLinksListItem" to="/topics">
               Topics
-            </Link>{" "}
-            &nbsp;
+            </Link>
           </li>
           <li>
-            <Link to="/articles" className="navLinks">
+            <Link className="navLinksListItem" to="/articles">
               Articles
             </Link>
           </li>
         </ul>
-        <li>
-          <LoginForm
-            className="navLoginForm"
-            userLoggedIn={props.userLoggedIn}
-            loginLogout={props.loginLogout}
-          />
-        </li>
-      </ul>
+      </section>
+      <section className="navLoginForm">
+        <LoginForm
+          userLoggedIn={props.userLoggedIn}
+          loginLogout={props.loginLogout}
+        />
+      </section>
     </nav>
   );
 }

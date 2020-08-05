@@ -4,7 +4,7 @@ import { ArticlesList } from "../Lists/ArticlesList";
 const ArticlesByTopicPage = (props) => {
   return (
     <section>
-      <h3>{props.topic_slug}</h3>
+      <h2>{props.topic_slug}</h2>
 
       <ArticlesList topic_slug={props.topic_slug} />
     </section>

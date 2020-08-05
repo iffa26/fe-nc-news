@@ -8,7 +8,7 @@ function ArticleCard(props) {
     <li key={article.article_id} className="ArticleCard">
       <section className="ArticleCard-titleAuthorTopic">
         <Link to={`/article/${article.article_id}`}>
-          <h3 className="ArticleCard-title">{article.title}</h3>
+          <h4 className="ArticleCard-title">{article.title}</h4>
         </Link>
         <p>
           by @{article.author} in &nbsp;
@@ -20,7 +20,8 @@ function ArticleCard(props) {
         <p> {article.votes} votes</p>
         <p>
           Posted
-          <FormatDate rawDateString={article.created_at} ago />
+          <FormatDate rawDateString={article.created_at} />
+          ago
         </p>
       </section>
     </li>

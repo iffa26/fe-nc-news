@@ -17,7 +17,7 @@ class TopicsList extends React.Component {
     if (topics) {
       return (
         <main>
-          <h3> Topics </h3>
+          <h3> Trending topics </h3>
           <ul>
             {this.state.topics.map((topic) => {
               return (
