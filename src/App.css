@@ -22,9 +22,6 @@ main {
   padding-right: 10%;
 }
 
-body {
-  background-color: #ecfffb;
-}
 /* TITLES */
 
 h2 {
@@ -175,11 +172,9 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #45ffdc;
-  padding: 0.6em;
 }
 
 .navHeader {
-  color: #333;
   padding: 0;
   margin: 0;
   font-size: 2.5em;
@@ -204,7 +199,7 @@ nav {
 nav ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-style: none;
   padding-top: 0.3em;
@@ -247,22 +242,17 @@ button {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    background-color: #45ffdc;
-    padding: 0.6em;
   }
   nav ul {
     padding-right: 1em;
     padding-left: 1em;
   }
-  /* 
-
+  .navLinksList {
+    background-color: #ecfffb;
+  }
   .navLoginForm {
-    grid-template: "navLoginForm";
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: left;
-  } */
+    background-color: #ecfffb;
+  }
 
   .ArticleCard {
     grid-template-columns: 1fr;
